@@ -1,0 +1,7 @@
+.main {
+  @apply mt-0;
+}
+
+.container {
+  padding-top: 5rem;
+}
