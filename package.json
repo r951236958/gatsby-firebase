@@ -36,9 +36,7 @@
     "react-lazy-load-image-component": "1.5.1",
     "tailwindcss": "1.9.6"
   },
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",

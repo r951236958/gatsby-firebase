@@ -1,14 +1,15 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
+import PropTypes from "prop-types";
 
-const Popover = ({ color }) => {
+const Popover = ({ color, btnText, popTitle, popText, el }) => {
   const [popoverShow, setPopoverShow] = React.useState(false);
   const btnRef = React.createRef();
   const popoverRef = React.createRef();
 
   const openPopover = () => {
     new createPopper(btnRef.current, popoverRef.current, {
-      placement: "bottom"
+      placement: el === "bottom" ? "bottom" : el
     });
     setPopoverShow(true);
   };
@@ -34,7 +35,7 @@ const Popover = ({ color }) => {
             }}
             ref={btnRef}
           >
-            Bottom {color}
+            {btnText}
           </button>
           <div
             className={
@@ -53,17 +54,27 @@ const Popover = ({ color }) => {
                   "-600 text-white opacity-75 font-semibold p-3 mb-0 border-b border-solid border-gray-200 uppercase rounded-t-lg"
                 }
               >
-                {color} popover title
+                {popTitle}
               </div>
-              <div className="text-white p-3">
-                And here's some amazing content. It's very engaging. Right?
-              </div>
+              <div className="text-white p-3">{popText}</div>
             </div>
           </div>
         </div>
       </div>
     </>
   );
+};
+
+Popover.propTypes = {
+  color: PropTypes.string.isRequired,
+  btnText: PropTypes.string.isRequired,
+  popTitle: PropTypes.element,
+  popText: PropTypes.element,
+  el: PropTypes.string
+};
+
+Popover.defaultProps = {
+  el: ``
 };
 
 export default Popover;
